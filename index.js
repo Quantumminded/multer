@@ -4,7 +4,6 @@ const multer = require('multer');
 const port = process.env.PORT || 5000;
 const path = require('path');
 
-
 const storage = multer.diskStorage({
     destination: './uploads',
     filname: (req,file,cb) => {
