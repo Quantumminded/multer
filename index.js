@@ -18,7 +18,8 @@ const upload = multer({storage});
 
 app.post('/upload-profile-pic', upload.single('profile_pic'), (req, res) => {
     console.log(req.file);
-    return res.send(`<h1>Page</h1>`)
+    if (!req.file) return res.status(400).send('Image could not be uploaded.');
+    return res.status(200).send(`<h1>Page</h1>`)
 })
 
 app.listen(port, () => console.log(`Connected to port ${port}`));
