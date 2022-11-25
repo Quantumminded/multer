@@ -16,8 +16,9 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 
-app.post('/upload-profile-pic', (req, res) => {
-    res.send(`<h1>Page</h1>`)
+app.post('/upload-profile-pic', upload.single('profile_pic'), (req, res) => {
+    console.log(req.file);
+    return res.send(`<h1>Page</h1>`)
 })
 
 app.listen(port, () => console.log(`Connected to port ${port}`));
